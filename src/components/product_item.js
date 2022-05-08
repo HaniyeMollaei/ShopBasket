@@ -11,13 +11,13 @@ class ProductItem extends Component {
         return (
             <div className="product-list-item">
                 <Row>
-                    <Col xs={3}> <img className="product-item-img" src={this.props.imageUrl} /></Col>
+                    <Col xs={3}> <img className="product-item-img" src={this.props.product.imageUrl} /></Col>
                     <Col className="left-column description-in-list">
                         <Row>
-                            <p className="row shop-name">{this.props.title}</p>
+                            <p className="row shop-name">{this.props.product.title}</p>
                         </Row>
                         <Row>
-                            <p className="row">{this.props.description}</p>
+                            <p className="row">{this.props.product.description}</p>
                         </Row>
                         <Row xs={4}>
                             <button className="btn" onClick={this.props.addProduct}>
@@ -29,7 +29,7 @@ class ProductItem extends Component {
                         </Row>
                     </Col>
                     <Col xs={2}>
-                            <p className="row add-cart">$ {this.props.price}</p>
+                            <p className="row add-cart">$ {this.props.product.price}</p>
 
                     </Col>
                 </Row>

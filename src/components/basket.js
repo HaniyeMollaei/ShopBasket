@@ -6,7 +6,6 @@ class BasketList extends Component {
 
 
   render() {
-    console.log(this.props.count);
     return (
 
       <div className='box-border'>

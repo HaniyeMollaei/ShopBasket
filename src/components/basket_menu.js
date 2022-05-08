@@ -15,7 +15,7 @@ class BasketMenu extends Component {
                     <Col></Col>
                     <Col xs={2}>
                         <button className="continue left-column" onClick={(e) => {
-                            this.props.changeMode(0);
+                            this.props.changeMode("list");
                         }} >
                             <img className="menu-img left-column" src={basket} />
                             <p> Continue Shopping</p>

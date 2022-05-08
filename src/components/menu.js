@@ -24,7 +24,7 @@ class Menu extends Component {
                         <button className='btn-img'>
                             <img className='menu-img' src={menu} style={{ backgroundColor: this.state.color0 }}
                                 onClick={(e) => {
-                                    this.props.changeMode(0);
+                                    this.props.changeMode("list");
                                     this.setState({
                                         color0: '#F7DEDE',
                                         color1: 'inherit',
@@ -36,7 +36,7 @@ class Menu extends Component {
                         <button className='btn-img'>
                             <img className='menu-img' src={circled_menu} style={{ backgroundColor: this.state.color1 }}
                                 onClick={() => {
-                                    this.props.changeMode(1);
+                                    this.props.changeMode("grid");
                                     this.setState({
                                         color0: 'inherit',
                                         color1: '#F7DEDE',
@@ -47,7 +47,7 @@ class Menu extends Component {
                         <button className='btn-img'>
                             <img className='menu-img' src={basket} style={{ backgroundColor: this.state.color2 }}
                                 onClick={() => {
-                                    this.props.changeMode(2);
+                                    this.props.changeMode("basket");
                                     this.setState({
                                         color0: 'inherit',
                                         color1: 'inherit',
