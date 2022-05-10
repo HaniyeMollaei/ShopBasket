@@ -71,12 +71,6 @@
   background-color: lightgray;
 }
 
-.grid-img{
-  border-top-right-radius: 16px 16px;
-  border-top-left-radius: 16px 16px;
-  height: 200px;
-  object-fit: cover;
-}
 .my-body {
   background-color: white;
   padding-left: 80px;
@@ -104,19 +98,26 @@
 }
 
 .product-grid-item {
-  width: 95%;
+  width: 30%;
+  margin-right: 1.6%;
+  margin-left: 1.6%;
+  margin-bottom: 5%;
   height: 500px;
   text-align: start;
   position: center relative;
   background-color: white;
- 
-  border: 0.5px solid lightgray;
-  border-top-left-radius: 8px 8px;
-  border-bottom-left-radius: 8px 8px;
-  border-top-right-radius: 8px 8px;
-  border-bottom-right-radius: 8px 8px;
+  border: 1px solid lightgray;
+  border-radius: 4% 4% 4% 4% ;
   float: left;
 }
+
+
+.grid-img{
+  border-radius: 6% 6% 0 0 ;
+  height: 200px;
+  object-fit: cover;
+}
+
 
 .grid-description{
   padding-bottom: 4px;
@@ -124,12 +125,15 @@
   padding-right: 10%;
   height: 180px;
 }
-
 .grid-title{
   padding-bottom: 8px;
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 8px;
+} 
+.grid-button{
+  padding-left: 5%;
+  padding-right: 5%;
 } 
 .shop-name {
   float: left;

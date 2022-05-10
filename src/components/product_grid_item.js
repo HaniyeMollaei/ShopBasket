@@ -20,7 +20,7 @@ class ProductGridItem extends Component {
                     <Row className='grid-description'>
                         <p className="row">{this.props.product.description.substring(0, 250)} ...</p>
                     </Row>
-                    <Row>
+                    <Row className='grid-button'>
                         <Col>
                         <button className="btn" onClick={this.props.addProduct}>
                             <div>

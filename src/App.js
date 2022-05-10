@@ -1,12 +1,7 @@
 import './css/App.css';
 import './css/fonts.css';
-import './components/products_list';
+import ProductsList from'./components/products';
 import './components/menu';
-import BasketMenu from './components/basket_menu';
-import BasketList from './components/basket';
-import ProductsList from './components/products_list';
-import ProductsGridView from './components/products_gride_view';
-import Menu from './components/menu';
 import React from "react";
 
 
@@ -15,6 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      display: "light",
       show_mode: "list",
       basketList: [],//{product , inventory}
     };
@@ -64,27 +60,29 @@ class App extends React.Component {
     }
   }
 
-  changeShowMode(mode){
+  changeShowMode(mode) {
     this.setState({ show_mode: mode, });
+  }
+
+  changeDisplayMode(mode) {
+    this.setState({ display: mode, });
   }
 
   render() {
     return (
       <div className="my-body">
-        {
-          this.state.show_mode === "basket" ?
-            <BasketMenu changeMode={(mode) =>this.changeShowMode(mode)} />
-            : <Menu changeMode={(mode) =>this.changeShowMode(mode)} />
-        }
 
-        {this.state.show_mode === "list" ?
-          <ProductsList addProduct={(p) => this.addProductToBasket(p)} /> :
-          this.state.show_mode === "grid" ?
-            <ProductsGridView addProduct={(p) => this.addProductToBasket(p)} /> :
-            <BasketList count={this.getBasketProductCount()} purchases={this.state.basketList}
-              IncreaseInventory={(p) => this.changeProductInventory(p, "increase")}
-              decreaseInventory={(p) => this.changeProductInventory(p, "decrease")}
-              removeItem={(p) => this.removeItemFromBasket(p)} />}
+          <ProductsList
+            count={this.getBasketProductCount()}
+            current={this.state.show_mode}
+            display={this.state.display}
+            changeDisplayMode={(mode) => this.changeDisplayMode(mode)}
+            changeMode={(mode) => this.changeShowMode(mode)}
+            addProduct={(p) => this.addProductToBasket(p)}
+            purchases={this.state.basketList}
+            IncreaseInventory={(p) => this.changeProductInventory(p, "increase")}
+            decreaseInventory={(p) => this.changeProductInventory(p, "decrease")}
+            removeItem={(p) => this.removeItemFromBasket(p)}  /> 
       </div>);
   }
 }
