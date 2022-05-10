@@ -15,7 +15,7 @@ class BasketList extends Component {
           </Row>
 
           <hr />
-          <Row>
+          <Row style={{ color: this.props.display === "light" ? 'darkslategrey' : 'white' }}>
             <Col xs={6}><p className="basket-property">Product</p></Col>
             <Col><p className="basket-property">Price</p></Col>
             <Col><p className="basket-property">Quantity</p></Col>
@@ -26,8 +26,9 @@ class BasketList extends Component {
 
           <Row>
             <Col>
-              {this.props.purchases.map(i => <BasketProductItem key={i.product.id} id={i.product.id} title={i.product.title}
-                inventory={i.inventory} imageUrl={i.product.imageUrl} price={i.product.price}
+              {this.props.purchases.map(i => <BasketProductItem key={i.product.id} id={i.product.id} 
+              title={i.product.title} inventory={i.inventory} display={this.props.display}
+              imageUrl={i.product.imageUrl} price={i.product.price}
                 description={i.product.description}
                 IncreaseInventory={() => { this.props.IncreaseInventory(i) }}
                 decreaseInventory={() => { this.props.decreaseInventory(i) }}

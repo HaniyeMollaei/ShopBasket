@@ -17,6 +17,7 @@
   display: inline-block;
   width: 200px;
 }
+
 .btn:hover {
   background-color: #F7DEDE;
 }
@@ -35,6 +36,7 @@
   font-family: Lato;
   color: #A93C72;
 }
+
 .delete-btn:hover {
   background-color: #F7DEDE;
 }
@@ -42,7 +44,6 @@
 .box-border {
   border: 0.5px solid lightgray;
   padding: 40px 40px;
-  margin-bottom: 40px;
 }
 
 .inventory-btn {
@@ -71,28 +72,37 @@
   background-color: lightgray;
 }
 
+
 .my-body {
   background-color: white;
   padding-left: 80px;
   padding-right: 80px;
+  padding-bottom: 40px;
+}
+
+.dark-body {
+  background-color: #130739;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-bottom: 40px;
+
 }
 
 .menu {
   width: 100%;
-  padding-top: 20px;
+  padding-top: 40px;
   padding-bottom: 20px;
   text-align: start;
   position: center relative;
-  background-color: white;
+  background-color: inherit;
   margin-bottom: 20px;
-  margin-top: 20px;
 }
 
 .product-list-item {
   width: 100%;
   text-align: start;
   position: center relative;
-  background-color: white;
+  background-color: inherit;
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -105,36 +115,39 @@
   height: 500px;
   text-align: start;
   position: center relative;
-  background-color: white;
+  background-color: inherit;
   border: 1px solid lightgray;
-  border-radius: 4% 4% 4% 4% ;
+  border-radius: 4% 4% 4% 4%;
   float: left;
 }
 
 
-.grid-img{
-  border-radius: 6% 6% 0 0 ;
+.grid-img {
+  border-radius: 6% 6% 0 0;
   height: 200px;
   object-fit: cover;
 }
 
 
-.grid-description{
+.grid-description {
   padding-bottom: 4px;
   padding-left: 10%;
   padding-right: 10%;
   height: 180px;
 }
-.grid-title{
+
+.grid-title {
   padding-bottom: 8px;
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 8px;
-} 
-.grid-button{
+}
+
+.grid-button {
   padding-left: 5%;
   padding-right: 5%;
-} 
+}
+
 .shop-name {
   float: left;
   font-size: 24px;
@@ -163,7 +176,7 @@
   font-size: 16px;
   font-weight: 900;
   font-family: Lato;
-  color: darkslategrey;
+  /* color: darkslategrey; */
   margin-top: 8px;
 }
 
@@ -187,17 +200,18 @@
 
 
 
-.btn-img{
+.btn-img {
   border: none;
   cursor: pointer;
   display: inline-block;
   background-color: inherit;
 }
-.btn-img:hover{
+
+.btn-img:hover {
   background-color: #F7DEDE;
 }
 
-.menu-img{
+.menu-img {
   padding: 8px;
   height: 36px;
   width: 36px;

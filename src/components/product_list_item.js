@@ -17,7 +17,9 @@ class ProductItem extends Component {
                             <p className="row shop-name">{this.props.product.title}</p>
                         </Row>
                         <Row>
-                            <p className="row">{this.props.product.description}</p>
+                            <p className="row"
+                             style={{ color: this.props.display === "light" ? 'darkslategrey' : 'white' }}
+                             >{this.props.product.description}</p>
                         </Row>
                         <Row xs={4}>
                             <button className="btn" onClick={this.props.addProduct}>

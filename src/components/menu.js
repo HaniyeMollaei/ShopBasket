@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import menu from '../img/menu_vertical.svg';
+import moon from '../img/moon.svg';
+import sun from '../img/sun.svg'
 import circled_menu from '../img/menu_circled.svg';
 import basket from '../img/basket.svg';
 import Row from 'react-bootstrap/esm/Row';
@@ -15,7 +17,12 @@ class Menu extends Component {
                     <>
                         <Row>
                             <Col><p className="shop-name">Haniue Shop</p></Col>
-                            <Col xs={2}>
+                            <Col xs={3}>
+
+                                <button className='btn-img'>
+                                    <img className='menu-img' src={this.props.display === "light" ? moon : sun}
+                                        onClick={this.props.changeDisplayMode} />
+                                </button>
 
                                 <button className='btn-img'>
                                     <img className='menu-img' src={menu}

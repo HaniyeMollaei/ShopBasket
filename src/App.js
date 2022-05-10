@@ -1,6 +1,6 @@
 import './css/App.css';
 import './css/fonts.css';
-import ProductsList from'./components/products';
+import ProductsList from './components/products';
 import './components/menu';
 import React from "react";
 
@@ -64,25 +64,32 @@ class App extends React.Component {
     this.setState({ show_mode: mode, });
   }
 
-  changeDisplayMode(mode) {
-    this.setState({ display: mode, });
+  changeDisplayMode() {
+    if (this.state.display === "light") {
+      document.body.style.backgroundColor = "#130739";
+      this.setState({ display: "dark", })
+    } else {
+      document.body.style.backgroundColor = "white";
+      this.setState({ display: "light", });
+    }
+
   }
 
   render() {
     return (
-      <div className="my-body">
+      <div className={this.state.display === "light" ? "my-body" : "dark-body"}>
 
-          <ProductsList
-            count={this.getBasketProductCount()}
-            current={this.state.show_mode}
-            display={this.state.display}
-            changeDisplayMode={(mode) => this.changeDisplayMode(mode)}
-            changeMode={(mode) => this.changeShowMode(mode)}
-            addProduct={(p) => this.addProductToBasket(p)}
-            purchases={this.state.basketList}
-            IncreaseInventory={(p) => this.changeProductInventory(p, "increase")}
-            decreaseInventory={(p) => this.changeProductInventory(p, "decrease")}
-            removeItem={(p) => this.removeItemFromBasket(p)}  /> 
+        <ProductsList
+          count={this.getBasketProductCount()}
+          current={this.state.show_mode}
+          display={this.state.display}
+          changeDisplayMode={() => this.changeDisplayMode()}
+          changeMode={(mode) => this.changeShowMode(mode)}
+          addProduct={(p) => this.addProductToBasket(p)}
+          purchases={this.state.basketList}
+          IncreaseInventory={(p) => this.changeProductInventory(p, "increase")}
+          decreaseInventory={(p) => this.changeProductInventory(p, "decrease")}
+          removeItem={(p) => this.removeItemFromBasket(p)} />
       </div>);
   }
 }

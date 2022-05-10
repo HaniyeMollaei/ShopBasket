@@ -10,19 +10,21 @@ class ProductsList extends Component {
   render() {
 
     return (
-      <>
-        <Menu changeMode={(mode) => { this.props.changeMode(mode) }} current={this.props.current} />
-
+      <div>
+        <Menu
+          display={this.props.display}
+          changeDisplayMode={() => this.props.changeDisplayMode()}
+          changeMode={(mode) => { this.props.changeMode(mode) }}
+          current={this.props.current} />
 
         {this.props.current === "list" ?
-          productList.map(i => <ProductItem key={i.id} product={i}
-            addProduct={() => { this.props.addProduct(i) }} />) :
+          productList.map(i => <ProductItem key={i.id} product={i} display={this.props.display}
+            addProduct={() => { this.props.addProduct(i) }} />)
+          : this.props.current === "grid" ?
+              productList.map(i => <ProductGridItem key={i.id} product={i} display={this.props.display}
+                addProduct={() => { this.props.addProduct(i) }} />)
 
-          this.props.current === "grid" ?
-            productList.map(i => <ProductGridItem key={i.id} product={i}
-              addProduct={() => { this.props.addProduct(i) }} />) :
-
-            <BasketList
+            :<BasketList
               count={this.props.count}
               purchases={this.props.purchases}
               display={this.props.display}
@@ -30,9 +32,7 @@ class ProductsList extends Component {
               decreaseInventory={(p) => this.props.decreaseInventory(p, "decrease")}
               removeItem={(p) => this.props.removeItem(p)} />
         }
-      </>
-
-
+      </div>
     );
   }
 

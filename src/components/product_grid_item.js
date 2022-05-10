@@ -18,7 +18,8 @@ class ProductGridItem extends Component {
                         <p className="row shop-name">{this.props.product.title}</p>
                     </Row>
                     <Row className='grid-description'>
-                        <p className="row">{this.props.product.description.substring(0, 250)} ...</p>
+                        <p className="row"
+                         style={{ color: this.props.display === "light" ? 'darkslategrey' : 'white' }}>{this.props.product.description.substring(0, 250)} ...</p>
                     </Row>
                     <Row className='grid-button'>
                         <Col>

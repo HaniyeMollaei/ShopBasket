@@ -6,10 +6,9 @@ class BasketProductItem extends Component {
 
 
     render() {
-
         return (
             <div className="product-list-item">
-                <Row>
+                <Row style={{ color: this.props.display === "light" ? 'darkslategrey' : 'white' }}>
                     <Col xs={2}><img className="basket-product-item-img" src={this.props.imageUrl} /></Col>
                     <Col xs={4}><p className="shop-name">{this.props.title}</p> </Col>
                     <Col><p className="basket-property">$ {this.props.price}</p></Col>
