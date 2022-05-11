@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import Menu from './menu';
 import BasketProductItem from './basket_product_item';
 
 class BasketList extends Component {
@@ -8,6 +9,13 @@ class BasketList extends Component {
   render() {
     return (
       <>
+        <Menu
+          display={this.props.display}
+          changeDisplayMode={() => this.props.changeDisplayMode()}
+          changeMode={(mode) => { this.props.changeMode(mode) }}
+          current={this.props.current} />
+          <hr />
+
         <div className='box-border'>
 
           <Row>

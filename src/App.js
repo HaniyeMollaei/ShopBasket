@@ -2,9 +2,10 @@ import './css/App.css';
 import './css/fonts.css';
 import ProductsList from './components/products';
 import './components/menu';
+import BasketList from './components/basket';
 import React from "react";
-
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ShopContext, { ShopProvider } from './contexts/my_context';
 class App extends React.Component {
 
   constructor(props) {
@@ -13,6 +14,10 @@ class App extends React.Component {
       display: "light",
       show_mode: "list",
       basketList: [],//{product , inventory}
+      setDisplay: (mode) => { this.setState({ display: mode }); },
+      setShowMode: (mode) => { this.setState({ show_mode: mode }); },
+      setBasketList: (purchases) => { this.setState({ basketList: purchases }) },
+      setDefaultContext: () => { }
     };
   }
 
@@ -76,21 +81,49 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className={this.state.display === "light" ? "my-body" : "dark-body"}>
 
-        <ProductsList
-          count={this.getBasketProductCount()}
-          current={this.state.show_mode}
-          display={this.state.display}
-          changeDisplayMode={() => this.changeDisplayMode()}
-          changeMode={(mode) => this.changeShowMode(mode)}
-          addProduct={(p) => this.addProductToBasket(p)}
-          purchases={this.state.basketList}
-          IncreaseInventory={(p) => this.changeProductInventory(p, "increase")}
-          decreaseInventory={(p) => this.changeProductInventory(p, "decrease")}
-          removeItem={(p) => this.removeItemFromBasket(p)} />
-      </div>);
+
+    return (
+      <ShopContext.Provider value={this.state}>
+        <div className={this.state.display === "light" ? "my-body" : "dark-body"}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/products" element=
+                {<ProductsList
+                  count={this.getBasketProductCount()}
+                  current={this.state.show_mode}
+                  display={this.state.display}
+                  changeDisplayMode={() => this.changeDisplayMode()}
+                  changeMode={(mode) => this.changeShowMode(mode)}
+                  addProduct={(p) => this.addProductToBasket(p)}
+                />} />
+              <Route path="/basket" element={
+                <BasketList
+                  count={this.getBasketProductCount()}
+                  current={this.state.show_mode}
+                  display={this.state.display}
+                  changeMode={(mode) => this.changeShowMode(mode)}
+                  purchases={this.state.basketList}
+                  IncreaseInventory={(p) => this.IncreaseInventory(p, "increase")}
+                  decreaseInventory={(p) => this.decreaseInventory(p, "decrease")}
+                  removeItem={(p) => this.removeItem(p)} />
+              } />
+
+              <Route path="*" element=
+                {<ProductsList
+                  count={this.getBasketProductCount()}
+                  current={this.state.show_mode}
+                  display={this.state.display}
+                  changeDisplayMode={() => this.changeDisplayMode()}
+                  changeMode={(mode) => this.changeShowMode(mode)}
+                  addProduct={(p) => this.addProductToBasket(p)}
+                />} />
+            </Routes>
+          </BrowserRouter>
+
+        </div>
+      </ShopContext.Provider>
+    );
   }
 }
 
