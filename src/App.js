@@ -104,9 +104,9 @@ class App extends React.Component {
                   display={this.state.display}
                   changeMode={(mode) => this.changeShowMode(mode)}
                   purchases={this.state.basketList}
-                  IncreaseInventory={(p) => this.IncreaseInventory(p, "increase")}
-                  decreaseInventory={(p) => this.decreaseInventory(p, "decrease")}
-                  removeItem={(p) => this.removeItem(p)} />
+                  IncreaseInventory={(p) => this.changeProductInventory(p, "increase")}
+                  decreaseInventory={(p) => this.changeProductInventory(p, "decrease")}
+                  removeItem={(p) => this.removeItemFromBasket(p)} />
               } />
 
               <Route path="*" element=
