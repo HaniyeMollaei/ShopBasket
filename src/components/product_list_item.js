@@ -33,7 +33,7 @@ class ProductItem extends Component {
                         <Row xs={4}>
                             <ShopConsumer>
                                 {({addProductToBasket}) => (
-                                <button className="btn" onClick={addProductToBasket}>
+                                <button className="btn" onClick={()=>{addProductToBasket(this.props.product)}}>
                                     <div>
                                         <img className="add-cart-img " src={basket} />
                                         <p className="row add-cart">Add to Cart</p>
@@ -48,9 +48,9 @@ class ProductItem extends Component {
                         <p className="row add-cart">$ {this.props.product.price}</p>
 
                     </Col>
-                </Row>
-                <hr className="my-divider" />
-            </div>
+                </Row >
+            <hr className="my-divider" />
+            </div >
         );
     }
 }

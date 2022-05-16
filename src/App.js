@@ -10,9 +10,11 @@ class App extends React.Component {
 
 
   state = {
+
     display: "light",
     show_mode: "list",
     basketList: [],//{product , inventory}
+
     setDisplay: () => {
       if (this.state.display === "light") {
         document.body.style.backgroundColor = "#130739";
@@ -30,6 +32,7 @@ class App extends React.Component {
     getBasketProductCount: () => {
       let sum = 0;
       this.state.basketList.map(i => sum = sum + i.inventory);
+      console.log("sum: "+ sum);
       return sum;
     },
 
@@ -46,6 +49,7 @@ class App extends React.Component {
     },
 
     addProductToBasket: (p) => {
+
       if (this.state.basketList.some(i => i.product.id === p.id)) {
         this.setState({
           basketList: this.state.basketList.map(el => (el.product.id === p.id ? Object.assign({}, el, el.inventory++) : el))
@@ -86,7 +90,7 @@ class App extends React.Component {
               <Route path="/basket" element={<BasketList />} />
 
               <Route path="*" element={<Products />} />
-              
+
             </Routes>
           </BrowserRouter>
 

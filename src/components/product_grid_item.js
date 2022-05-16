@@ -33,7 +33,7 @@ class ProductGridItem extends Component {
                         <Col>
                             <ShopConsumer>
                                 {({ addProductToBasket }) => (
-                                    <button className="btn" onClick={addProductToBasket}>
+                                    <button className="btn" onClick={()=>{addProductToBasket(this.props.product)}}>
                                         <div>
                                             <img className="add-cart-img " src={basket} />
                                             <p className="row add-cart">Add to Cart</p>

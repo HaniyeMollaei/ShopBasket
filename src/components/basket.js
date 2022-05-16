@@ -32,13 +32,13 @@ class BasketList extends Component {
                     <Col xs={1}></Col>
                   </Row>
                   <hr />
-
+                  
                   <Row>
                     <Col>
                       {
-                        
-                      basketList.map(i => <BasketProductItem key={i.product.id} item={i} />)}
-                    </Col>
+                        basketList.map(i => <BasketProductItem key={i.product.id} item={i} product={i.product}/>)
+                      }
+                   </Col>
 
                   </Row>
 
