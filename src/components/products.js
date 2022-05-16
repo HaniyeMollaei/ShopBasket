@@ -3,39 +3,34 @@ import productList from '../data/products.json';
 import ProductItem from './product_list_item';
 import ProductGridItem from './product_grid_item';
 import Menu from './menu';
+import ShopContext from "../contexts/my_context";
 
-class ProductsList extends Component {
+class Products extends Component {
 
   render() {
 
     return (
       <div>
-        <Menu
-          display={this.props.display}
-          changeDisplayMode={() => this.props.changeDisplayMode()}
-          changeMode={(mode) => { this.props.changeMode(mode) }}
-          current={this.props.current} />
 
-        {this.props.current === "list" ?
-          productList.map(i => <ProductItem key={i.id} product={i} display={this.props.display}
-            addProduct={() => { this.props.addProduct(i) }} />)
-          : 
-            //  this.props.current === "grid" ?
-              productList.map(i => <ProductGridItem key={i.id} product={i} display={this.props.display}
-                addProduct={() => { this.props.addProduct(i) }} />)
+        <Menu />
 
-            // :<BasketList
-            //   count={this.props.count}
-            //   purchases={this.props.purchases}
-            //   display={this.props.display}
-            //   IncreaseInventory={(p) => this.props.IncreaseInventory(p, "increase")}
-            //   decreaseInventory={(p) => this.props.decreaseInventory(p, "decrease")}
-            //   removeItem={(p) => this.props.removeItem(p)} />
-        }
+        <ShopContext.Consumer>
+          {
+            ({show_mode }) => (
+              <>
+                {show_mode === "list" ?
+                  productList.map(i => <ProductItem key={i.id} product={i} />)
+                  :
+                  productList.map(i => <ProductGridItem key={i.id} product={i} />)
+                }
+              </>
+            )
+          }
+        </ShopContext.Consumer>
       </div>
     );
   }
 
 }
 
-export default ProductsList;
+export default Products;

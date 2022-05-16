@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import basket from '../img/basket.svg';
+import { ShopConsumer } from '../contexts/my_context';
 
 class ProductItem extends Component {
 
@@ -17,21 +18,34 @@ class ProductItem extends Component {
                             <p className="row shop-name">{this.props.product.title}</p>
                         </Row>
                         <Row>
-                            <p className="row"
-                             style={{ color: this.props.display === "light" ? 'darkslategrey' : 'white' }}
-                             >{this.props.product.description}</p>
+                            <ShopConsumer>
+                                {
+                                    ({ display }) => (
+                                        <p className="row"
+                                            style={{ color: display === "light" ? 'darkslategrey' : 'white' }}>
+                                            {this.props.product.description}</p>
+                                    )
+                                }
+                            </ShopConsumer>
+
+
                         </Row>
                         <Row xs={4}>
-                            <button className="btn" onClick={this.props.addProduct}>
-                                <div>
-                                    <img className="add-cart-img " src={basket} />
-                                    <p className="row add-cart">Add to Cart</p>
-                                </div>
-                            </button>
+                            <ShopConsumer>
+                                {({addProductToBasket}) => (
+                                <button className="btn" onClick={addProductToBasket}>
+                                    <div>
+                                        <img className="add-cart-img " src={basket} />
+                                        <p className="row add-cart">Add to Cart</p>
+                                    </div>
+                                </button>
+                                )}
+                            </ShopConsumer>
+
                         </Row>
                     </Col>
                     <Col xs={2}>
-                            <p className="row add-cart">$ {this.props.product.price}</p>
+                        <p className="row add-cart">$ {this.props.product.price}</p>
 
                     </Col>
                 </Row>

@@ -1,7 +1,8 @@
 
 import React from "react";
 
-const ShopContext = React.createContext({
+const ShopContext = React.createContext(
+    {
     show_mode: "list",
     display: " light",
     basketList: [],
@@ -9,7 +10,8 @@ const ShopContext = React.createContext({
     setDisplay: ()=>{},
     setBasketList: ()=>{},
     setDefaultContext: ()=>{}
-});
+}
+);
 
 export default ShopContext
 export const ShopProvider = ShopContext.Provider
